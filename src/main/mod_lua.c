@@ -110,12 +110,7 @@ typedef struct lua_hash_s {
 // Globals.
 //
 
-static pthread_rwlock_t g_lock =
-#if defined(__USE_UNIX98) || defined (__USE_XOPEN2K)
-		PTHREAD_RWLOCK_WRITER_NONRECURSIVE_INITIALIZER_NP;
-#else
-		PTHREAD_RWLOCK_INITIALIZER;
-#endif
+static pthread_rwlock_t g_lock = PTHREAD_RWLOCK_INITIALIZER;
 
 static lua_hash* g_lua_hash = NULL;
 static pthread_rwlock_t g_cache_lock = PTHREAD_RWLOCK_INITIALIZER;
